@@ -3,6 +3,7 @@
 HPWalletCore 致力于打造一款简单易用的跨平台钱包库。 它提供了统一的API,允许使用者在BTC、ETH、ETC、LTC、DASH、DOGE、QTUM、USDT代币上导出私钥、公钥和地址,并提供相应构造交易的方法。
 另外,区别于其他第三方钱包方案:我们在导入助记词、私钥时,选填了手机UDID以及密码属性。即便是助记词遭遇泄漏,在没有您的手机或密码情况下,也难以盗取您的数字资产,确保您的数字资产足够安全!
 
+[英文版🇺🇸](https://github.com/hyperpayorg/hyperpaywallet/blob/master/README_CN.md)
 # HPWalletCore Supports
 
 当前 HPWalletCore 所支持的助记词/私钥导入和构造交易签名如下所示：

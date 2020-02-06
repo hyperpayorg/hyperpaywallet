@@ -4,6 +4,7 @@ HPWalletCore is committed to building a simple and easy-to-use cross platform wa
 
 In addition, it is different from other third-party wallet schemes: when importing mnemonics or private keys, we choose to fill in the phone UDID and password attributes. Even if the mnemonics are leaked, it is difficult to steal your digital assets without your mobile phone or password, so as to ensure your digital assets are secure enough!
 
+[中文版🇨🇳](https://github.com/hyperpayorg/hyperpaywallet/blob/master/README_CN.md)
 # HPWalletCore Supports
 Currently,HPWalletCore supports the mnemonics or importing private keys and creating raw sign transactions as follows:
 
