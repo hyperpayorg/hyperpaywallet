@@ -1,7 +1,7 @@
 
 # HPWalletCore
 HPWalletCore 致力于打造一款简单易用的跨平台钱包库。 它提供了统一的API,允许使用者在BTC、ETH、ETC、LTC、DASH、DOGE、QTUM、USDT代币上导出私钥、公钥和地址,并提供相应构造交易的方法。
-另外,区别于其他第三方钱包方案:在导入助记词、私钥时,选填了手机UDID以及密码属性。选填后,助记词、手机以及密码同时遭遇泄漏,才会威胁到您的资产,确保您的数字资产足够安全!
+另外,区别于其他第三方钱包方案:在导入助记词、私钥时,选填了手机UDID以及密码属性。选填后,助记词、手机以及密码同时遭遇窃取,才会威胁到您的资产,确保您的数字资产足够安全!
 
 [英文版🇺🇸](https://github.com/hyperpayorg/hyperpaywallet/blob/master/README_CN.md)
 # HPWalletCore Supports
@@ -95,7 +95,7 @@ func GenerateMnemonicWallet(mnemonic, password, coin string)
 
 > 必要参数说明：助记词 mnemonic, password 密码, 主链币名称 coin
 
-创建返回的数据结构,同 `助记词生成钱包`
+创建返回的数据结构,同 `WalletAccount`
 ### GenerateMnemonicWallet Example
 ```go
 mnemonic := "xxx xxx"
@@ -114,7 +114,7 @@ func GenerateSeedWallet(seed string, coin string)
 
 > 必要参数说明：根 Seed,  主链币名称 coin
 
-创建返回的数据结构,同 `助记词生成钱包`
+创建返回的数据结构,同 `WalletAccount`
 ### GenerateSeedWallet Example
 ```go
 mnemonic := "xxx xxx"
