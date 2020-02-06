@@ -1,47 +1,53 @@
 
 # HPWalletCore
-HPWalletCore is committed to building a simple and easy-to-use cross platform wallet library. It provides a unified API, which allows users to export private key, public key and address about BTC, ETH, ETC, LTC, DASH, DOGE, QTUM and USDT tokens. It provides corresponding methods to create raw sign transactions.
+HPWalletCore is committed to build a straightforward and easy-to-use cross platform wallet library.
+It proposed an unified API suite, which allows users to generate or import BTC, ETH, ETC, LTC, DASH, DOGE, QTUM and USDT tokens' private keys, public key and addresses. It also provided corresponding methods in generating raw transactions of the coins and signing of the transactions.
 
-In addition, it is different from other third-party wallet schemes: when importing mnemonics or private keys, we choose to fill in the phone UDID and password attributes. Even if the mnemonics are leaked, it is difficult to steal your digital assets without your mobile phone or password, so as to ensure your digital assets are secure enough!
+In addition, it is different to other third-party wallet schemes: when generating mnemonics or private keys, the HPWalletCore allowed optional parameters of the mobile phone's UDID and password to encrypt the secret. When user choose to use this added extra layer in mnemonics or private keys generation, it will provide an additional layer of security to the digital assets. Even if the mnemonics is leaked, adversaries cannot access to your digital assets without first knowing the phone's UDID and the password you set. This way, it hopefully can provide a good enough security for your digital assets.
 
+
+For a Chinese version of the README file, please see the link below:
 [中文版🇨🇳](https://github.com/hyperpayorg/hyperpaywallet/blob/master/README_CN.md)
-# HPWalletCore Supports
-Currently,HPWalletCore supports the mnemonics or importing private keys and creating raw sign transactions as follows:
 
-|Coin|Mnemonics Support|PrivateKey Support|Transaction Support|Explore|Mark|
+# HPWalletCore Supports
+Currently, HPWalletCore supports generating and importing of mnemonics private keys and raw transactions related operations.
+The specific operations that are supported by HPWalletCore are listed in the table below:
+
+|Coin|Mnemonics Support|PrivateKey Support|Transaction Support|Explore|Remark|
 |:----:|:----:|:----:|:----:|:----:|:----:|
-|BTC|✔️|✔️|✔️|[DecodeTx](https://live.blockcypher.com/btc/decodetx/)、[Broadcast](https://blockchair.com/broadcast)|
-|BCH|✔️|✔️|✔️|[PushTx](https://bch.btc.com/16Lp3ZvcusRGtqy7DgF5gz6PGutvuEtwRt)|
-|DASH|✔️|✔️|✔️|[Broadcast](https://insight.dash.org/insight/tx/send)、[DecodeTx](https://live.blockcypher.com/dash/decodetx/)|
-|DOGE|✔️|✔️|✔️|[DecodeTx](https://live.blockcypher.com/doge/decodetx/)、[Broadcast](https://blockchair.com/broadcast)|
+|BTC|✔️|✔️|✔️|[DecodeTx](https://live.blockcypher.com/btc/decodetx/)、[Broadcast](https://blockchair.com/broadcast)| |
+|BCH|✔️|✔️|✔️|[PushTx](https://bch.btc.com/16Lp3ZvcusRGtqy7DgF5gz6PGutvuEtwRt)| |
+|DASH|✔️|✔️|✔️|[Broadcast](https://insight.dash.org/insight/tx/send)、[DecodeTx](https://live.blockcypher.com/dash/decodetx/)| |
+|DOGE|✔️|✔️|✔️|[DecodeTx] (https://live.blockcypher.com/doge/decodetx/)、[Broadcast](https://blockchair.com/broadcast)| |
 |ETH|✔️|✔️|✔️|[PushTx](https://etherscan.io/pushTx?%253Flang=zh-CN)、[Broadcast](https://badmofo.github.io/ethsend/)|Support ERC20|
-|ETC|✔️|✔️|✔️|[PushTx](https://etherscan.io/pushTx?%253Flang=zh-CN)||
-|LTC|✔️|✔️|✔️|[PushTx](https://bch.btc.com/16Lp3ZvcusRGtqy7DgF5gz6PGutvuEtwRt)|
+|ETC|✔️|✔️|✔️|[PushTx](https://etherscan.io/pushTx?%253Flang=zh-CN)| |
+|LTC|✔️|✔️|✔️|[PushTx](https://bch.btc.com/16Lp3ZvcusRGtqy7DgF5gz6PGutvuEtwRt)| |
 |QTUM|✔️|✔️|✔️|[PushTx](https://qtum.info/misc/raw-tx)|Support QRC20|
-|USDT|✔️|✔️|✔️|[DecodeTx](https://live.blockcypher.com/btc/decodetx/)、[Broadcast](https://blockchair.com/broadcast)|
+|USDT|✔️|✔️|✔️|[DecodeTx](https://live.blockcypher.com/btc/decodetx/)、[Broadcast](https://blockchair.com/broadcast)| |
 
 
 <!-- |--|✔️|❌|❌| -->
-## Installation
 
-- [Go Environment Installation](https://www.runoob.com/go/go-environment.html)
-- [Go&Gomobile Environment Construction](https://www.jianshu.com/p/d6d6af4cac4d)
+
+## Environment Setup
+
+- [Go Installation](https://golang.org/doc/install)
+- [Gomobile Environment Setup](https://pkg.go.dev/golang.org/x/mobile/cmd/gomobile?tab=doc)
 - In the hpywallet directory, compile the Android Reference Library:`gomobile bind -target=android .`
 - In the hpywallet directory, compile the iOS Reference Library:`gomobile bind -target=ios .`
-- About the leaking librarys xxx  `go get xxx ..`
+- About the missing librarys, use `go get xxx ..` to install them
 
+## Seed Generation
 
-##  Mnemonics Generate Seed
-
-Seed can be generated by 'importing' mnemonic & password.
-Import mnemonics using the following methods:
+Seed can be generated by `importing` the mnemonic & password.
+Import mnemonics using the following method:
 
 ```go
 func GenerateSeed(mnemonic string, password string)
 ```
 
-> Description of necessary parameters： mnemonic,   password 
-Data structure returned, ` hex seed`
+> Data structure returned, ` hex seed`
+
 ### GenerateSeed Example
 ```go
 mnemonic := "xxx xxx"
@@ -49,48 +55,45 @@ seed := hpywallet.GenerateSeed(mnemonic, "")
 fmt.Println("Seed = ", seed)
 ```
 
-## Mnemonics Generate Wallet
-
-Private key, public key and address can be generated by importing mnemonic.
+## Use Mnemonics to generate wallet
+Private key, public key and address can be generated by `importing` the mnemonic.
 Import mnemonics using the following methods:
 
 ```go
 func GenerateWallet(mnemonic string, coin string)
 ```
 
-> Description of necessary parameters: mnemonic,  coin
-  
 Data structure returned as follow：
-
 ```go
 type WalletAccount struct {
 	ResCode    int    // 0 fail 1 Success
-	Address    string 
-	PublicKey  string 
-	PrivateKey string 
+	Address    string
+	PublicKey  string
+	PrivateKey string
 	Seed       string // root seed
-	Coin       string 
+	Coin       string
 	ErrMsg     string // fail messages
 	ErrCode    int    // err code
 	Params     []byte // reserved fields
 }
 
 ```
+
 ### GenerateWallet Example
 ```go
 mnemonic := "xxx xxx"
 dogeWallet := hpywallet.GenerateWallet(mnemonic, "doge")
 fmt.Println("dogeWallet: ", dogeWallet)
 ```
-## Mnemonics & password Generate Wallet
-Private key, public key and address can be generated by importing mnemonics & password.
+
+## use mnemonics & password to generate wallet
+Private key, public key and address can be generated by `importing` mnemonics & password.
 Import mnemonics & password using the following methods:
 
 ```go
 func GenerateMnemonicWallet(mnemonic, password, coin string)
 ```
 
->Description of necessary parameters: mnemonic, password,  coin
 Data structure returned as `WalletAccount`
 
 ### GenerateMnemonicWallet Example
@@ -99,16 +102,14 @@ mnemonic := "xxx xxx"
 btcWallet := hpywallet.GenerateMnemonicWallet(mnemonic, "123456", "btc")
 fmt.Println("btcWallet: ", btcWallet)
 ```
-## Coin Root Seed Generate Wallet
 
-Private key, public key and address can be generated by importing root seed & coin.
+## Use the coin's Root Seed to generate wallet
+
+Private key, public key and address can be generated by `importing` the root seed & coin.
 Import seed & coin using the following methods:
-
-
 ```go
 func GenerateSeedWallet(seed string, coin string)
 ```
-> Description of necessary parameters: Root Seed, coin
 Data structure returned as `WalletAccount`
 ### GenerateSeedWallet Example
 ```go
@@ -116,17 +117,16 @@ mnemonic := "xxx xxx"
 btcWallet := hpywallet.GenerateSeedWallet(seed, "btc")
 fmt.Println("btcWallet: ", btcWallet)
 ```
-## Import private key (WIF) to generate Wallet
-Private key, public key and address can be generated by importing private key (WIF).
+
+## Import private key (WIF) to generate wallet
+Private key, public key and address can be generated by `importing` the WIF (Wallet Import Format) of the private key.
 
 The following methods are used to create a wallet with a private key:
 
 ```go
 func ImportPrivateWIF(wif string, coin string)
 ```
-> Description of necessary parameters:PrivateKey (WIF),  coin
-
-Data structure returned as `WalletAccount`。
+Data structure returned as `WalletAccount`
 ### ImportPrivateWIF Example
 ```go
 mnemonic := "xxx xxx"
@@ -134,22 +134,22 @@ dogeWallet := hpywallet.GenerateWallet(mnemonic, "doge")
 importWallet := hpywallet.ImportPrivateWIF(dogeWallet.PrivateKey, "doge")
 fmt.Println("importWallet: ", importWallet)
 ```
-## Mnemonics Or PrivateKey Generate KeyStore
-The keystore file is generated by  mnemonics or private keys, UDID of the device and password.
 
-Generate keystore file, using the following methods:
+## Mnemonics Or PrivateKey Generate KeyStore
+The keystore file is generated by using the mnemonics or private key, UDID of the device and the password of the user's choosing.
+
+To generate keystore file, use the following method:
 
 ```go
-func EnKeystore(privateKey, password, udid string)
+func EnKeystore(Key, password, udid string)
 ```
 
-> Description of necessary parameters: mnemonic(privateKey), password , udid
+> Description: Key here can be either the mnemonic or the privatekey (WIF)
 
 Data structure returned as :
-
 ```go
 type KeystoreResult struct {
-	Result  string 
+	Result  string
 	ResCode int    // 0 fail 1 success
 	ErrMsg  string // fail reason
 }
@@ -157,25 +157,25 @@ type KeystoreResult struct {
 ```
 ### EnKeystore Example
 ```go
-   privateKey := "L1oh9KNH4XpJgqDodxhjPgaEVS1qwXToWvPf2Zyn6bcm7xxxxxxx"
+  Key := "L1oh9KNH4XpJgqDodxhjPgaEVS1qwXToWvPf2Zyn6bcm7xxxxxxx"
 	pwd := "11111"
 	udid := "AOIJF-QWEQR-VDFBET-YTAWWE"
 
 	// Encode
-	enResult := hpywallet.EnKeystore(privateKey, pwd, udid)
+	enResult := hpywallet.EnKeystore(Key, pwd, udid)
 	fmt.Println("Keystore : \n", enResult.Result)
 ```
 ## KeyStore File Decrypt
-The keystore file is decrypted by  json, udid  and password.
+The keystore file is decrypted using the KeyStore json, udid and the password.
 
-Decrypt keystore file, using the following methods:
+To decrypt keystore file, use the following methods:
 
 
 ```go
 func DeKeystore(json, password, udid string)
 ```
 
-> Description of necessary parameters:  KeyStore Json, password, udid
+> Description: JSON is the KeyStore JSON file
 
 Data structure returned as `KeystoreResult`。
 
@@ -188,52 +188,49 @@ Data structure returned as `KeystoreResult`。
 	deResult := hpywallet.DeKeystore(enResult, pwd, udid)
 	fmt.Println("PrivateKey : ", deResult.Result)
 ```
-## Token Create Raw Sign Transaction
 
-Build each token signature algorithm
+## Sign a raw transaction
 
-**SignInput**  Some parameters can be selected.The data structure is as follows:
+**SignInput**  Some parameters are optional, the data structure is illustrated as below:
 
 ```go
 type SignInput struct {
-	PrivateKey   string 
-	Coin         string 
-	Symbol       string 
+	PrivateKey   string
+	Coin         string
+	Symbol       string
 	Amount       int64  // transfer amount
 	Change       int64  // transfer change amount
 	Fee          int64  //transfer fee
-	GasLimit     int64  
-	GasPrice     int64  
+	GasLimit     int64
+	GasPrice     int64
 	Type         string // contract type
 	SrcAddr      string // send address
 	DestAddr     string // destination address
 	ContractAddr string // contract address
 	Memo         string // memo mark
-	Sequence     int64  
+	Sequence     int64
 	Inputs       []byte // vins
 	Params       []byte // reserved fields
 }
 ```
-
-签名方法名称：
+**method**:
 
 ```go
 func SignRawTransaction(signIn *SignInput)
 ```
 
-方法返回结构如下：
+data structure returned as `SignResult` as below:
 
 ```go
 type SignResult struct {
 	ResCode int    // 0 fail 1 success
-	Coin    string // chain token
-	Symbol  string // symbol 
+	Coin    string // name of the crypto token
+	Symbol  string // symbol
 	RawTX   string //  rawtx
 	TxHash  string // tx hash
 	ErrMsg  string // fail reason
 	ErrCode int    // err code
-
-	Params []byte // reserved fields
+	Params []byte // reserved field
 }
 ```
 ### SignRawTransaction Example
@@ -268,7 +265,7 @@ if tranferResult.ResCode == 0 {
 ```
 
 
-In the currency of the signature algorithm, the main chain currency that the `Inputs` attribute must contain is:
+For the following main-chain currency, `Inputs` must be included in the call as part of the `SignInput` data:
 
 - [x] BTC
 - [x] USDT
@@ -277,28 +274,27 @@ In the currency of the signature algorithm, the main chain currency that the `In
 - [x] BCH
 - [x] DASH
 
-the `Inputs` attribute is `JsonArrayToByte[OutPutItem...].Bytes`
+For any UTXO token, the `Inputs` attribute is `JsonArrayToByte[OutPutItem...].Bytes`
 
  The data structure about `OutPutItem`is as follows:
 
 ```go
 type OutPutItem struct {
-	TxHash   string 
+	TxHash   string
 	Vout     uint32
 	Value    int64
 	Pkscript string // lock script
 }
 ```
 
-Attention:
-
-- About QRC20 Transaction: the `ContractAddr` attribute is a required parameter;
+**!Please Note!**:
+- Qtum QRC20 Transaction: the `ContractAddr` attribute is a required parameter;
 
 ## TODO LIST
-
+**Features to be completed**
 - [ ] Verify the token address
 - [ ] Multi sign transaction
-- [ ] More chains open source
+- [ ] Support more chains
 
 ## Thanks and more info.
 

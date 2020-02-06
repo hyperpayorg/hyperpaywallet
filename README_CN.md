@@ -1,34 +1,30 @@
 
 # HPWalletCore
-HPWalletCore 致力于打造一款简单易用的跨平台钱包库。 它提供了统一的API,允许使用者在BTC、ETH、ETC、LTC、DASH、DOGE、QTUM、USDT代币上导出私钥、公钥和地址,并提供相应构造交易的方法。
-另外,区别于其他第三方钱包方案:在导入助记词、私钥时,选填了手机UDID以及密码属性。选填后,助记词、手机以及密码同时遭遇窃取,才会威胁到您的资产,确保您的数字资产足够安全!
+HPWalletCore 致力于打造一款简单易用的跨平台钱包库。 它提供了一套统一的API,允许使用者可以产生或导入BTC、ETH、ETC、LTC、DASH、DOGE、QTUM、USDT代币的私钥、公钥和地址,并提供相应构造原始交易的方法。
+另外,有别于其他第三方钱包方案:在产生助记词、私钥时,用户可选填手机UDID以及密码属性来对助记词或私钥进行加密。在此基础上，只有助记词、手机以及密码同时遭遇窃取,才会威胁到您的资产,确保您的数字资产足够安全!
 
 [英文版🇺🇸](https://github.com/hyperpayorg/hyperpaywallet/blob/master/README_CN.md)
 # HPWalletCore Supports
-
 当前 HPWalletCore 所支持的助记词/私钥导入和构造交易签名如下所示：
 
 |币种名称|助记词导入|私钥导入|交易签名|构造交易查询|备注|
 |:----:|:----:|:----:|:----:|:----:|:----:|
-|BTC|✔️|✔️|✔️|[DecodeTx](https://live.blockcypher.com/btc/decodetx/)、[Broadcast](https://blockchair.com/broadcast)|
-|BCH|✔️|✔️|✔️|[PushTx](https://bch.btc.com/16Lp3ZvcusRGtqy7DgF5gz6PGutvuEtwRt)|
-|DASH|✔️|✔️|✔️|[Broadcast](https://insight.dash.org/insight/tx/send)、[DecodeTx](https://live.blockcypher.com/dash/decodetx/)|
-|DOGE|✔️|✔️|✔️|[DecodeTx](https://live.blockcypher.com/doge/decodetx/)、[Broadcast](https://blockchair.com/broadcast)|
+|BTC|✔️|✔️|✔️|[DecodeTx](https://live.blockcypher.com/btc/decodetx/)、[Broadcast](https://blockchair.com/broadcast)| |
+|BCH|✔️|✔️|✔️|[PushTx](https://bch.btc.com/16Lp3ZvcusRGtqy7DgF5gz6PGutvuEtwRt)| |
+|DASH|✔️|✔️|✔️|[Broadcast](https://insight.dash.org/insight/tx/send)、[DecodeTx](https://live.blockcypher.com/dash/decodetx/)| |
+|DOGE|✔️|✔️|✔️|[DecodeTx](https://live.blockcypher.com/doge/decodetx/)、[Broadcast](https://blockchair.com/broadcast)| |
 |ETH|✔️|✔️|✔️|[PushTx](https://etherscan.io/pushTx?%253Flang=zh-CN)、[Broadcast](https://badmofo.github.io/ethsend/)|支持ERC20|
-|ETC|✔️|✔️|✔️|[PushTx](https://etherscan.io/pushTx?%253Flang=zh-CN)||
-|LTC|✔️|✔️|✔️|[PushTx](https://bch.btc.com/16Lp3ZvcusRGtqy7DgF5gz6PGutvuEtwRt)|
+|ETC|✔️|✔️|✔️|[PushTx](https://etherscan.io/pushTx?%253Flang=zh-CN)| |
+|LTC|✔️|✔️|✔️|[PushTx](https://bch.btc.com/16Lp3ZvcusRGtqy7DgF5gz6PGutvuEtwRt)| |
 |QTUM|✔️|✔️|✔️|[PushTx](https://qtum.info/misc/raw-tx)|支持QRC20|
-|USDT|✔️|✔️|✔️|[DecodeTx](https://live.blockcypher.com/btc/decodetx/)、[Broadcast](https://blockchair.com/broadcast)|
+|USDT|✔️|✔️|✔️|[DecodeTx](https://live.blockcypher.com/btc/decodetx/)、[Broadcast](https://blockchair.com/broadcast)| |
 
-
-<!-- |--|✔️|❌|❌| -->
-## 环境安装
+## 环境配置
 - [Go 语言环境安装](https://www.runoob.com/go/go-environment.html)
 - [Go&Gomobile 环境搭建](https://www.jianshu.com/p/d6d6af4cac4d)
 - 在 hpywallet 目录下,编译 Android 引用库:`gomobile bind -target=android .`
 - 在 hpywallet 目录下,编译 iOS 引用库:`gomobile bind -target=ios .`
 - 对于存在可能缺少的类库xxx  `go get xxx 即可`
-
 
 ## 根 Seed 生成方法
 
@@ -60,7 +56,7 @@ func GenerateWallet(mnemonic string, coin string)
 ```
 
 > 必要参数说明：助记词 mnemonic,  主链币名称 coin
-  
+
 创建返回的数据结构如下：
 
 ```go
@@ -145,10 +141,10 @@ fmt.Println("importWallet: ", importWallet)
 加密产生 KeyStore 文件,使用以下方法:
 
 ```go
-func EnKeystore(privateKey, password, udid string)
+func EnKeystore(Key, password, udid string)
 ```
 
-> 必要参数说明： mnemonic(或privateKey), password 密码, 手机 udid
+> 必要参数说明： Key (可为：mnemonic 或 privateKey), password 密码, 手机 udid
 
 创建返回的数据结构如下：
 
@@ -321,5 +317,3 @@ func CreateRawTransaction(signIn *SignInput)
 
 ## 感谢支持
 感谢 `btcsuite`、`go-ethereum`、`blocktree`等第三方库的支持。
-
-[TOC]
