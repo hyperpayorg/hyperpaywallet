@@ -27,6 +27,12 @@ var (
 	}
 )
 
+func GenerateMnemonic() string {
+	entropy, _ := bip39.NewEntropy(128)
+	mnemonic, _ := bip39.NewMnemonic(entropy)
+
+	return mnemonic
+}
 func GenerateSeed(mnemonic string, password string) string {
 	masterSeed := bip39.NewSeed(mnemonic, password)
 

@@ -26,6 +26,22 @@ HPWalletCore 致力于打造一款简单易用的跨平台钱包库。 它提供
 - 在 hpywallet 目录下,编译 iOS 引用库:`gomobile bind -target=ios .`
 - 对于存在可能缺少的类库xxx  `go get xxx 即可`
 
+## 助记词 随机生产
+随机生产助记词使用以下方法：
+
+
+```go
+func GenerateMnemonic() 
+```
+
+> 方法返回的数据结构:  ` mnemonics`
+
+### GenerateMnemonic Example
+```go
+mnemonic := hpywallet.GenerateMnemonic()
+fmt.Println("Mnemonic: ", mnemonic)
+```
+
 ## 根 Seed 生成方法
 
 通过 `导入` 助记词&密码 可以产生 Seed。
@@ -38,7 +54,7 @@ func GenerateSeed(mnemonic string, password string)
 
 > 必要参数说明：助记词 mnemonic,   password 密码
 
-创建返回的数据结构, `十六进制 Seed`
+方法返回的数据结构, `十六进制 Seed`
 ### GenerateSeed Example
 ```go
 mnemonic := "xxx xxx"

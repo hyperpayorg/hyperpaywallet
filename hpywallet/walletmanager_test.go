@@ -1,9 +1,9 @@
 package hpywallet_test
 
 import (
-	"HPWalletCommon/hpywallet"
 	"encoding/json"
 	"fmt"
+	"hyperpaywallet/hpywallet"
 	"testing"
 )
 
@@ -12,6 +12,10 @@ var (
 	mnemonic     = "zero guard grass mandate invest anger actress moral gasp easy way student"
 )
 
+func TestGenerateMnemonic(t *testing.T) {
+	mnemonic := hpywallet.GenerateMnemonic()
+	fmt.Println("Mnemonic: ", mnemonic)
+}
 func TestGenerateSeed(t *testing.T) {
 	seed := hpywallet.GenerateSeed(mnemonic, "")
 	fmt.Println("Seed1 = ", seed)
