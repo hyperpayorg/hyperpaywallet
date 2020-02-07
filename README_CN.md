@@ -12,7 +12,7 @@ HPWalletCore 致力于打造一款简单易用的跨平台钱包库。 它提供
 |BTC|✔️|✔️|✔️|[DecodeTx](https://live.blockcypher.com/btc/decodetx/)、[Broadcast](https://blockchair.com/broadcast)| |
 |BCH|✔️|✔️|✔️|[PushTx](https://bch.btc.com/16Lp3ZvcusRGtqy7DgF5gz6PGutvuEtwRt)| |
 |DASH|✔️|✔️|✔️|[Broadcast](https://insight.dash.org/insight/tx/send)、[DecodeTx](https://live.blockcypher.com/dash/decodetx/)| |
-|DOGE|✔️|✔️|✔️|[DecodeTx](https://live.blockcypher.com/doge/decodetx/)、[Broadcast](https://blockchair.com/broadcast)| |
+|DOGE|✔️|✔️|✔️|[Broadcast](https://blockchair.com/broadcast)| |
 |ETH|✔️|✔️|✔️|[PushTx](https://etherscan.io/pushTx?%253Flang=zh-CN)、[Broadcast](https://badmofo.github.io/ethsend/)|支持ERC20|
 |ETC|✔️|✔️|✔️|[PushTx](https://etherscan.io/pushTx?%253Flang=zh-CN)| |
 |LTC|✔️|✔️|✔️|[PushTx](https://bch.btc.com/16Lp3ZvcusRGtqy7DgF5gz6PGutvuEtwRt)| |
